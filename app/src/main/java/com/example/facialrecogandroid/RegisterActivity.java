@@ -27,6 +27,11 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.google.mlkit.vision.face.FaceDetection;
+import com.google.mlkit.vision.face.FaceDetector;
+import com.google.mlkit.vision.face.FaceDetectorOptions;
+
 import java.io.FileDescriptor;
 import java.io.IOException;
 
@@ -39,6 +44,15 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     //TODO declare face detector
+    // High-accuracy landmark detection and face classification
+    FaceDetectorOptions highAccuracyOpts =
+            new FaceDetectorOptions.Builder()
+                    .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_ACCURATE)
+                    .setLandmarkMode(FaceDetectorOptions.LANDMARK_MODE_NONE)
+                    .setClassificationMode(FaceDetectorOptions.CLASSIFICATION_MODE_NONE)
+                    .build();
+
+    FaceDetector detector;
 
 
     //TODO declare face recognizer
@@ -111,6 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         //TODO initialize face detector
+        detector = FaceDetection.getClient(highAccuracyOpts);
 
 
         //TODO initialize face recognition model
