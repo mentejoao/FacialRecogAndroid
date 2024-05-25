@@ -19,6 +19,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,12 +29,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.face.Face;
 import com.google.mlkit.vision.face.FaceDetection;
 import com.google.mlkit.vision.face.FaceDetector;
 import com.google.mlkit.vision.face.FaceDetectorOptions;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
+import java.util.List;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -69,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Bitmap inputImage = uriToBitmap(image_uri);
                         Bitmap rotated = rotateBitmap(inputImage);
                         imageView.setImageBitmap(rotated);
+                        performFaceDetection(rotated);
                     }
                 }
             });
@@ -83,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Bitmap inputImage = uriToBitmap(image_uri);
                         Bitmap rotated = rotateBitmap(inputImage);
                         imageView.setImageBitmap(rotated);
+                        performFaceDetection(rotated);
                     }
                 }
             });
@@ -188,7 +197,31 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     //TODO perform face detection
-
+    public void performFaceDetection(Bitmap input){
+        InputImage image = InputImage.fromBitmap(input, 0); // passa 0 pq ja rotacionamos
+        Task<List<Face>> result =
+                detector.process(image)
+                        .addOnSuccessListener(
+                                new OnSuccessListener<List<Face>>() {
+                                    @Override
+                                    public void onSuccess(List<Face> faces) {
+                                        // Task completed successfully
+                                        // ...
+                                        Log.d("try-face", "Len = "+faces.size());
+                                        for (Face face : faces) {
+                                            Rect bounds = face.getBoundingBox();
+                                        }
+                                    }
+                                })
+                        .addOnFailureListener(
+                                new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Task failed with an exception
+                                        // ...
+                                    }
+                                });
+    }
 
     //TODO perform face recognition
 
