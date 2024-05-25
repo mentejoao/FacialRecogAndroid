@@ -7,13 +7,48 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="409dp"
+        android:layout_height="377dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="152dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/buttonregister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonregister"
+        android:layout_width="207dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="19dp"
+        android:text="Register"
+        app:layout_constraintBottom_toTopOf="@+id/buttonrecognize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonrecognize"
+        android:layout_width="207dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="17dp"
+        android:text="Recognize"
+        app:layout_constraintBottom_toTopOf="@+id/buttonfacetime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonfacetime"
+        android:layout_width="207dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="20dp"
+        android:text="FaceTime"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
