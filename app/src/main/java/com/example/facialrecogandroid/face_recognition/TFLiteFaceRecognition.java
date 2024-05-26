@@ -157,7 +157,7 @@ public class TFLiteFaceRecognition
         String id = "0";
         String label = "?";
 
-        if (registered.size() > 0) {
+        if (MainActivity.registered.size() > 0) {
             final Pair<String, Float> nearest = findNearest(embeedings[0]);
             if (nearest != null) {
                 final String name = nearest.first;
