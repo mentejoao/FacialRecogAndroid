@@ -32,6 +32,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.facialrecogandroid.face_recognition.FaceClassifier;
+import com.example.facialrecogandroid.face_recognition.TFLiteFaceRecognition;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -66,6 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     //TODO declare face recognizer
+    FaceClassifier faceClassifier;
 
 
     //TODO get the image from gallery and display it
@@ -141,6 +144,11 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         //TODO initialize face recognition model
+        try {
+            faceClassifier = TFLiteFaceRecognition.create(getAssets(), "facenet.tflite", 160, false);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -251,7 +259,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         Bitmap croppedFace = Bitmap.createBitmap(input, bound.left, bound.top, bound.width(), bound.height());
         imageView.setImageBitmap(croppedFace);
-
+        FaceClassifier.Recognition recognition = faceClassifier.recognizeImage(croppedFace, true);
     }
 
 
