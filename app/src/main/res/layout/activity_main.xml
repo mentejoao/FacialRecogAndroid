@@ -21,10 +21,21 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
+        android:id="@+id/buttonrecognize"
+        android:layout_width="207dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/sulphur_point"
+        android:text="Recognize"
+        app:layout_constraintBottom_toTopOf="@+id/buttonrealtime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/buttonregister"
         android:layout_width="207dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/sulphur_point"
         android:text="Register"
         app:layout_constraintBottom_toTopOf="@+id/buttonrecognize"
@@ -32,23 +43,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonrecognize"
-        android:layout_width="207dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="24dp"
-        android:fontFamily="@font/sulphur_point"
-        android:text="Recognize"
-        app:layout_constraintBottom_toTopOf="@+id/buttonfacetime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonfacetime"
+        android:id="@+id/buttonrealtime"
         android:layout_width="207dp"
         android:layout_height="64dp"
         android:layout_marginBottom="76dp"
         android:fontFamily="@font/sulphur_point"
-        android:text="FaceTime"
+        android:text="RealTime"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
