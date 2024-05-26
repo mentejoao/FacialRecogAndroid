@@ -150,8 +150,8 @@ public class RegisterActivity extends AppCompatActivity {
         //TODO initialize face recognition model
         try {
             // mobile_face_net
-            // faceClassifier = TFLiteFaceRecognition.create(getAssets(), "mobile_face_net.tflite", 112, false);
-            faceClassifier = TFLiteFaceRecognition.create(getAssets(), "facenet.tflite", 160, false);
+            // faceClassifier = TFLiteFaceRecognition.create(getAssets(), "mobile_face_net.tflite", 112, false, getApplicationContext());
+            faceClassifier = TFLiteFaceRecognition.create(getAssets(), "facenet.tflite", 160, false, getApplicationContext());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

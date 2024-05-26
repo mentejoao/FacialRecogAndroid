@@ -150,8 +150,8 @@ public class RecognitionActivity extends AppCompatActivity {
         //TODO initialize face recognition model
         try {
             // mobile_face_net
-            // faceClassifier = TFLiteFaceRecognition.create(getAssets(), "mobile_face_net.tflite", 112, false);
-            faceClassifier = TFLiteFaceRecognition.create(getAssets(), "facenet.tflite", 160, false);
+            // faceClassifier = TFLiteFaceRecognition.create(getAssets(), "mobile_face_net.tflite", 112, false, getApplicationContext());
+            faceClassifier = TFLiteFaceRecognition.create(getAssets(), "facenet.tflite", 160, false, getApplicationContext());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -278,7 +278,7 @@ public class RecognitionActivity extends AppCompatActivity {
                 Paint p1 = new Paint();
                 p1.setColor(Color.RED);
                 p1.setTextSize(50);
-                canvas.drawText(recognition.getTitle(), bound.left, bound.top, p1);
+                canvas.drawText(recognition.getTitle() + "  "+ recognition.getDistance(), bound.left, bound.top, p1);
             }
         }
     }

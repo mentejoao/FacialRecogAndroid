@@ -19,7 +19,7 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
 
 
-    public static HashMap<String, FaceClassifier.Recognition> registered = new HashMap<>();
+    //public static HashMap<String, FaceClassifier.Recognition> registered = new HashMap<>();
     Button registerBtn, recognizeBtn, faceTimeBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
