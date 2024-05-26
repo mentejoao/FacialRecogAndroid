@@ -1,4 +1,4 @@
-package com.example.facerecognitionwithimages.db;
+package com.example.facialrecogandroid.DB;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.facerecognitionwithimages.face_recognition.FaceClassifier;
+import com.example.facialrecogandroid.face_recognition.FaceClassifier;
+
 
 public class DBHelper extends SQLiteOpenHelper {
 
