@@ -219,10 +219,10 @@ public class RegisterActivity extends AppCompatActivity {
                                             p1.setColor(Color.CYAN);
                                             p1.setStyle(Paint.Style.STROKE);
                                             p1.setStrokeWidth(5);
-
+                                            performFaceRecognition(bounds, input);
                                             canvas.drawRect(bounds, p1);
                                         }
-                                        imageView.setImageBitmap(mutableBmp);
+                                        //imageView.setImageBitmap(mutableBmp);
                                     }
                                 })
                         .addOnFailureListener(
@@ -236,6 +236,23 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     //TODO perform face recognition
+    public void performFaceRecognition(Rect bound, Bitmap input){
+        if(bound.top < 0){
+            bound.top = 0;
+        }
+        if(bound.left < 0){
+            bound.left = 0;
+        }
+        if(bound.right > input.getWidth()){
+            bound.right = input.getWidth() - 1; // evita index out of range (bb fora da imagem)
+        }
+        if(bound.bottom > input.getHeight()){
+            bound.right = input.getHeight() - 1; // evita index out of range (bb fora da imagem)
+        }
+        Bitmap croppedFace = Bitmap.createBitmap(input, bound.left, bound.top, bound.width(), bound.height());
+        imageView.setImageBitmap(croppedFace);
+
+    }
 
 
     @Override
