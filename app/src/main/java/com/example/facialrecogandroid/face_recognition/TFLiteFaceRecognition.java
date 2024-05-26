@@ -29,7 +29,7 @@ import java.util.Map;
 public class TFLiteFaceRecognition
         implements FaceClassifier {
 
-    //private static final int OUTPUT_SIZE = 512;
+    //private static final int mobile_facenet_OUTPUT_SIZE = 192;
     private static final int OUTPUT_SIZE = 512;
 
     // Only return this many results.

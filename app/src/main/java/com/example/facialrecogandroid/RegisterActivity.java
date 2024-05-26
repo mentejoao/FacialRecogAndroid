@@ -149,6 +149,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         //TODO initialize face recognition model
         try {
+            // mobile_face_net
+            // faceClassifier = TFLiteFaceRecognition.create(getAssets(), "mobile_face_net.tflite", 112, false);
             faceClassifier = TFLiteFaceRecognition.create(getAssets(), "facenet.tflite", 160, false);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -263,6 +265,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
         Bitmap croppedFace = Bitmap.createBitmap(input, bound.left, bound.top, bound.width(), bound.height());
        //imageView.setImageBitmap(croppedFace);
+        // mobile_face_net
+       //croppedFace = Bitmap.createScaledBitmap(croppedFace, 112, 112, false);
         croppedFace = Bitmap.createScaledBitmap(croppedFace, 160, 160, false);
         FaceClassifier.Recognition recognition = faceClassifier.recognizeImage(croppedFace, true);
         showRegisterDialog(croppedFace, recognition);
