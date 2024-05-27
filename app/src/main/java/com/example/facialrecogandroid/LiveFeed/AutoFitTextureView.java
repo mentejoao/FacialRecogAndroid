@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.realtimefacerecognition.LiveFeed;
+package com.example.facialrecogandroid.LiveFeed;
 
 import android.content.Context;
 import android.util.AttributeSet;

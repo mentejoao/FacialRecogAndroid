@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-package com.example.realtimefacerecognition.Drawing;
+package com.example.facialrecogandroid.Drawing;
 
 import android.content.Context;
 import android.graphics.Canvas;

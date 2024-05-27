@@ -17,15 +17,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.realtimefacerecognition.LiveFeed.AutoFitTextureView
+    <com.example.facialrecogandroid.LiveFeed.AutoFitTextureView
         android:id="@+id/texture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.example.realtimefacerecognition.Drawing.OverlayView
+    <com.example.facialrecogandroid.Drawing.OverlayView
         android:id="@+id/tracking_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/purple_500" />
+        android:background="#9C27B0" />
 
 </FrameLayout>

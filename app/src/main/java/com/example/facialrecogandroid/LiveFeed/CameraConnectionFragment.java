@@ -1,4 +1,4 @@
-package com.example.realtimefacerecognition.LiveFeed;
+package com.example.facialrecogandroid.LiveFeed;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -42,7 +42,7 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
-import com.example.realtimefacerecognition.R;
+import com.example.facialrecogandroid.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,6 +58,7 @@ import java.util.concurrent.TimeUnit;
  *
  * <p>Instantiated by newInstance.</p>
  */
+@SuppressLint("ValidFragment")
 @SuppressWarnings("FragmentNotInstantiable")
 public class CameraConnectionFragment extends Fragment {
 

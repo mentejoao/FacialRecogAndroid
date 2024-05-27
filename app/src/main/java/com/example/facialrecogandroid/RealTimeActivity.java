@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
-import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +12,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
@@ -29,32 +26,18 @@ import android.util.Size;
 import android.util.TypedValue;
 import android.view.Surface;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.facialrecogandroid.Drawing.BorderedText;
 import com.example.facialrecogandroid.Drawing.MultiBoxTracker;
 import com.example.facialrecogandroid.Drawing.OverlayView;
 import com.example.facialrecogandroid.face_recognition.FaceClassifier;
-import com.example.facialrecogandroid.face_recognition.TFLiteFaceRecognition;
 import com.example.facialrecogandroid.LiveFeed.CameraConnectionFragment;
 import com.example.facialrecogandroid.LiveFeed.ImageUtils;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.mlkit.vision.common.InputImage;
-import com.google.mlkit.vision.face.Face;
-import com.google.mlkit.vision.face.FaceDetection;
-import com.google.mlkit.vision.face.FaceDetector;
-import com.google.mlkit.vision.face.FaceDetectorOptions;
 
-import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.List;
 
-public class FaceTimeActivity extends AppCompatActivity implements ImageReader.OnImageAvailableListener{
+public class RealTimeActivity extends AppCompatActivity implements ImageReader.OnImageAvailableListener{
 
     Handler handler;
     private Matrix frameToCropTransform;
@@ -82,7 +65,7 @@ public class FaceTimeActivity extends AppCompatActivity implements ImageReader.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_realtime);
         handler = new Handler();
 
         //TODO handling permissions
@@ -166,7 +149,7 @@ public class FaceTimeActivity extends AppCompatActivity implements ImageReader.O
         final CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         String cameraId = null;
         try {
-            cameraId = manager.getCameraIdList()[useFacing];
+            cameraId = manager.getCameraIdList()[0];
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }

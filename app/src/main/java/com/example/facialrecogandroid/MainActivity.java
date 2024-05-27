@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         realTimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, FaceTimeActivity.class));
+                startActivity(new Intent(MainActivity.this, RealTimeActivity.class));
             }
         });
 
