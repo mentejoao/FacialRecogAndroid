@@ -15,6 +15,7 @@ limitations under the License.
 
 package com.example.facialrecogandroid.Drawing;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -122,6 +123,7 @@ public class MultiBoxTracker {
     return frameToCanvasMatrix;
   }
 
+  @SuppressLint("SuspiciousIndentation")
   public synchronized void draw(final Canvas canvas) {
       Log.d("tryDrawRect","inside draw 2");
     final boolean rotated = sensorOrientation % 180 == 90;

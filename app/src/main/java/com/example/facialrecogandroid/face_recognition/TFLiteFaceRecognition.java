@@ -66,6 +66,7 @@ public class TFLiteFaceRecognition
         dbHelper = new DBHelper(ctx);
         registered = dbHelper.getAllFaces();
     }
+    private TFLiteFaceRecognition() {    }
 
     //TODO loads the models into mapped byte buffer format
     private static MappedByteBuffer loadModelFile(AssetManager assets, String modelFilename)
@@ -89,6 +90,36 @@ public class TFLiteFaceRecognition
             throws IOException {
 
         final TFLiteFaceRecognition d = new TFLiteFaceRecognition(ctx);
+        d.inputSize = inputSize;
+
+        try {
+            d.tfLite = new Interpreter(loadModelFile(assetManager, modelFilename));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        d.isModelQuantized = isQuantized;
+        // Pre-allocate buffers.
+        int numBytesPerChannel;
+        if (isQuantized) {
+            numBytesPerChannel = 1; // Quantized
+        } else {
+            numBytesPerChannel = 4; // Floating point
+        }
+        d.imgData = ByteBuffer.allocateDirect(1 * d.inputSize * d.inputSize * 3 * numBytesPerChannel);
+        d.imgData.order(ByteOrder.nativeOrder());
+        d.intValues = new int[d.inputSize * d.inputSize];
+        return d;
+    }
+
+    public static FaceClassifier create(
+            final AssetManager assetManager,
+            final String modelFilename,
+            final int inputSize,
+            final boolean isQuantized)
+            throws IOException {
+
+        final TFLiteFaceRecognition d = new TFLiteFaceRecognition();
         d.inputSize = inputSize;
 
         try {
