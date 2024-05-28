@@ -10,7 +10,7 @@
   *  registrando uma foto pela câmera
   *  em tempo real
 
-## Modelos
+## Modelos 🧠
 #### Para detecção facial:
 * Google MLKit (BlazeFace)
 #### Para reconhecimento facial:
